@@ -1,0 +1,35 @@
+name: monocle
+description: A new Flutter project.
+version: 1.0.0+1
+environment:
+  sdk: '>=2.18.4 <3.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  foil: ^0.9.0+1
+  xl: ^0.9.1
+  http: ^0.13.5
+  dio: ^4.0.6
+  get: ^4.6.5
+  tinycolor2: ^3.0.1
+  blur: ^3.1.0
+  hive: ^2.2.3
+  image: ^3.2.2
+  hive_flutter: ^1.1.0
+  path_provider: ^2.0.11
+  json_annotation: ^4.7.0
+  scryfall_api: ^1.0.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+  build_runner: ^2.3.2
+  json_serializable: ^6.5.4
+  flutter_oss_licenses: ^2.0.1
+  flutter_launcher_icons: ^0.11.0
+
+
+flutter:
+  uses-material-design: true
