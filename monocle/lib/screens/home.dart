@@ -25,10 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Center(
           child: CardView(
-              id: "bf451d4b-0884-4ab5-8d85-312d9db82e76",
-              interactive: false,
-              flat: true,
-              foil: false,
+              id: "57877b1c-e91d-4941-81bd-008dff1272ed",
+              interactive: true,
+              flat: false,
+              foil: true,
               back: false,
               size: ImageVersion.large),
         ),
