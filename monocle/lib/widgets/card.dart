@@ -28,10 +28,12 @@ class CardView extends StatelessWidget {
   Widget wrap(BuildContext context, Widget child) => Foil(
       isUnwrapped: !foil,
       opacity: 0.4,
+      scalar: Scalar(horizontal: 0.2, vertical: 0.2),
       child: Foil(
           isUnwrapped: !foil,
           opacity: 0.2,
-          gradient: Foils.oilslick,
+          scalar: Scalar(horizontal: 0.55, vertical: 0.55),
+          gradient: Foils.linearLoopingReversed,
           child: child));
 
   @override
@@ -53,11 +55,12 @@ class CardView extends StatelessWidget {
                           layers: [
                             XLayer(
                               dimensionalOffset: 0.002,
-                              xOffset: 75,
-                              yOffset: 75,
-                              xRotation: 1,
-                              yRotation: 0.6,
-                              zRotationByX: 0.5,
+                              xOffset: 1,
+                              yOffset: 1,
+                              xRotation: 0.2,
+                              yRotation: 0.2,
+                              zRotationByX: 0.2,
+                              zRotationByGyro: 0.08,
                               child: Center(
                                   child: buildImage(context, snapshot.data!)),
                             )
