@@ -23,13 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-        body: const Center(
+        body: Center(
           child: CardView(
-              id: "70901356-3266-4bd9-aacc-f06c27271de5",
-              interactive: true,
-              foil: true,
+              id: "bf451d4b-0884-4ab5-8d85-312d9db82e76",
+              interactive: false,
+              flat: true,
+              foil: false,
               back: false,
-              size: ImageVersion.normal),
+              size: ImageVersion.large),
         ),
       );
 }

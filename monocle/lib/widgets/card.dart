@@ -11,19 +11,51 @@ class CardView extends StatelessWidget {
   final ImageVersion size;
   final bool back;
   final bool foil;
+  final bool flat;
   final bool interactive;
 
   const CardView(
       {Key? key,
       required this.id,
+      this.interactive = false,
       this.size = ImageVersion.normal,
       this.back = false,
       this.foil = false,
-      this.interactive = false})
-      : super(key: key);
+      this.flat = true})
+      : assert((interactive && !flat) || !interactive,
+            "Interactive cards must be non-flat"),
+        super(key: key);
 
-  Widget buildImage(BuildContext context, Uint8List bytes) => ClipRRect(
-      child: Image.memory(bytes), borderRadius: BorderRadius.circular(20));
+  Widget buildImage(BuildContext context, Uint8List bytes) => SizedBox(
+        width: MediaQuery.of(context).size.width * 0.8,
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.memory(
+              bytes,
+              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                child = ClipRRect(
+                    borderRadius: BorderRadius.circular(20), child: child);
+
+                if (wasSynchronouslyLoaded) {
+                  return child;
+                }
+
+                return AnimatedOpacity(
+                  child: child,
+                  opacity: frame == null ? 0 : 1,
+                  duration: const Duration(milliseconds: 750),
+                  curve: Curves.easeInOutCirc,
+                );
+              },
+            )),
+      );
+
+  Widget interactiveWrap(BuildContext context, Widget child) => interactive
+      ? InteractiveViewer(
+          minScale: 0.1,
+          child: child,
+        )
+      : child;
 
   Widget wrap(BuildContext context, Widget child) => Foil(
       isUnwrapped: !foil,
@@ -40,35 +72,38 @@ class CardView extends StatelessWidget {
   Widget build(BuildContext context) => FutureBuilder<Uint8List>(
         future: mtg.getCardByIdAsImage(id, imageVersion: size, backFace: back),
         builder: (context, snapshot) => snapshot.hasData
-            ? interactive
-                ? wrap(
-                    context,
-                    Padding(
-                      padding: EdgeInsets.zero,
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height,
-                        child: XL(
-                          dragging: Dragging(resets: true),
-                          sharesPointer: true,
-                          duration: const Duration(milliseconds: 150),
-                          layers: [
-                            XLayer(
-                              dimensionalOffset: 0.002,
-                              xOffset: 1,
-                              yOffset: 1,
-                              xRotation: 0.2,
-                              yRotation: 0.2,
-                              zRotationByX: 0.2,
-                              zRotationByGyro: 0.08,
-                              child: Center(
-                                  child: buildImage(context, snapshot.data!)),
-                            )
-                          ],
-                        ),
-                      ),
-                    ))
-                : wrap(context, buildImage(context, snapshot.data!))
-            : const CircularProgressIndicator(),
+            ? interactiveWrap(
+                context,
+                !flat
+                    ? wrap(
+                        context,
+                        Padding(
+                          padding: EdgeInsets.zero,
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height,
+                            child: XL(
+                              dragging: const Dragging(resets: true),
+                              sharesPointer: true,
+                              duration: const Duration(milliseconds: 150),
+                              layers: [
+                                XLayer(
+                                  dimensionalOffset: 0.002,
+                                  xOffset: 1,
+                                  yOffset: 1,
+                                  xRotation: 0.2,
+                                  yRotation: 0.2,
+                                  zRotationByX: 0.2,
+                                  zRotationByGyro: 0.08,
+                                  child: Center(
+                                      child:
+                                          buildImage(context, snapshot.data!)),
+                                )
+                              ],
+                            ),
+                          ),
+                        ))
+                    : wrap(context, buildImage(context, snapshot.data!)))
+            : const DelayedProgressIndicator(),
       );
 }
