@@ -1,7 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:monocle/firebase_options.dart';
 import 'package:monocle/screens/home.dart';
 
-void main () => runApp(MonocleApp());
+void main () => init().then((value) => runApp(const MonocleApp()));
+Future<void> init() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+}
 
 
 class MonocleApp extends StatefulWidget {
