@@ -1,4 +1,3 @@
-import 'package:fast_log/fast_log.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:monocle/firebase_options.dart';
@@ -7,13 +6,13 @@ import 'package:monocle/services/auth_service.dart';
 import 'package:monocle/sugar.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+void main() => setup().then((_) => runApp(const MonocleApp()));
+
+Future<void> setup() async {
   WidgetsFlutterBinding.ensureInitialized();
-  info("Firebase initializing?");
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MonocleApp());
 }
 
 class MonocleApp extends StatefulWidget {
