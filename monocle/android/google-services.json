@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "739962222655",
+    "project_id": "monocle-mtg",
+    "storage_bucket": "monocle-mtg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739962222655:android:64c6fe8d691461cbba208a",
+        "android_client_info": {
+          "package_name": "com.volmit.monocle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739962222655-r7pj0olsk9d6u8l04nbmohd236putvpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPR6PY8vq1V0eGqHWD4_9vv1O65-aT7VU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739962222655-r7pj0olsk9d6u8l04nbmohd236putvpi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "739962222655-hhcuf7t3ka7na7bvfkon8g09nd5atmad.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.volmit.monocle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:monocle/widgets/card.dart';
+import 'package:monocle/ui/widget/card.dart';
 import 'package:scryfall_api/scryfall_api.dart';
 
 class HomeScreen extends StatefulWidget {
