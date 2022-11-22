@@ -7,13 +7,13 @@ import 'package:monocle/services/auth_service.dart';
 import 'package:monocle/sugar.dart';
 import 'package:provider/provider.dart';
 
-void main() => init().then((value) => runApp(const MonocleApp()));
-Future<void> init() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   info("Firebase initializing?");
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  runApp(const MonocleApp());
 }
 
 class MonocleApp extends StatefulWidget {
