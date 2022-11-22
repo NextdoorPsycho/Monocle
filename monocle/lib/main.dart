@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:monocle/firebase_options.dart';
 import 'package:monocle/services/auth_service.dart';
+import 'package:monocle/services/magic_service.dart';
 import 'package:monocle/services/user_service.dart';
 import 'package:monocle/sugar.dart';
 import 'package:monocle/ui/screen/home.dart';
@@ -42,6 +43,10 @@ class _MonocleAppState extends State<MonocleApp> {
         providers: [
           Provider<AuthService>(
             create: (_) => AuthService()..onServiceBind(),
+            lazy: true,
+          ),
+          Provider<MagicService>(
+            create: (_) => MagicService()..onServiceBind(),
             lazy: true,
           ),
           Provider<UserService>(

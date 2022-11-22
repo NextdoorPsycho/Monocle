@@ -7,6 +7,7 @@
  * approved by Arcane Arts.
  */
 
+import 'package:delayed_progress_indicator/delayed_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:monocle/sugar.dart';

@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:delayed_progress_indicator/delayed_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:foil/foil.dart';
 import 'package:monocle/sugar.dart';
@@ -70,7 +71,7 @@ class CardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FutureBuilder<Uint8List>(
-        future: mtg.getCardByIdAsImage(id, imageVersion: size, backFace: back),
+        future: magicService().getImage(id: id, size: size, back: back),
         builder: (context, snapshot) => snapshot.hasData
             ? interactiveWrap(
                 context,
