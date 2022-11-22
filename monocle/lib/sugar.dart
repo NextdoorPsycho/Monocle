@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:monocle/services/auth_service.dart';
+import 'package:provider/provider.dart';
 import 'package:scryfall_api/scryfall_api.dart';
 
 final ScryfallApiClient mtg = ScryfallApiClient();
+BuildContext? tempContext;
+
+BuildContext ctx() => (Get.context ?? tempContext)!;
+
+AuthService authService() => ctx().read<AuthService>();
+
+abstract class MonocleService {
+  void onServiceBind();
+}
 
 class DelayedProgressIndicator extends StatefulWidget {
   final int delay;
