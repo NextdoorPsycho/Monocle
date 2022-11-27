@@ -924,6 +924,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  snackbar:
+    dependency: "direct main"
+    description:
+      name: snackbar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   source_gen:
     dependency: transitive
     description:

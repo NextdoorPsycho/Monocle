@@ -39,6 +39,7 @@ dependencies:
   precision_stopwatch: ^1.0.1
   crypto: ^3.0.2
   flutter_svg: ^1.1.6
+  snackbar: ^1.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

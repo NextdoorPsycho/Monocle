@@ -15,9 +15,6 @@ MagicService magicService() => ctx().read<MagicService>();
 
 UserService userService() => ctx().read<UserService>();
 
-void toast(String message) =>
-    ScaffoldMessenger.of(ctx()).showSnackBar(SnackBar(content: Text(message)));
-
 abstract class MonocleService {
   void onServiceBind();
 }
