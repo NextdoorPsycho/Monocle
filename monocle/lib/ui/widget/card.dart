@@ -61,11 +61,11 @@ class CardView extends StatelessWidget {
   Widget wrap(BuildContext context, Widget child) => Foil(
       isUnwrapped: !foil,
       opacity: 0.4,
-      scalar: Scalar(horizontal: 0.2, vertical: 0.2),
+      scalar: const Scalar(horizontal: 0.2, vertical: 0.2),
       child: Foil(
           isUnwrapped: !foil,
           opacity: 0.2,
-          scalar: Scalar(horizontal: 0.55, vertical: 0.55),
+          scalar: const Scalar(horizontal: 0.55, vertical: 0.55),
           gradient: Foils.linearLoopingReversed,
           child: child));
 
