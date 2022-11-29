@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:fast_log/fast_log.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:monocle/firebase_options.dart';
+import 'package:monocle/model/idlist.dart';
 import 'package:monocle/services/auth_service.dart';
 import 'package:monocle/services/magic_service.dart';
 import 'package:monocle/services/user_service.dart';
@@ -21,6 +24,19 @@ Future<void> setup() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  IDList ids = IDList();
+  Random random = Random.secure();
+  Set<int> all = {};
+
+  while (all.length < 60) {
+    all.add(random.nextInt(100));
+  }
+
+  ids.addAll(all.toList());
+  info("all: ${ids.getIds().toString()}");
+  info("uncompress: " + ids.decompress(ids.toJson()["data"]!));
+  info("compressed: " + ids.toJson()["data"]!);
 }
 
 class MonocleApp extends StatefulWidget {
