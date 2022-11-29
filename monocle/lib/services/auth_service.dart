@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:monocle/model/user.dart' as mg;
 import 'package:monocle/sugar.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:snackbar/snackbar.dart';
 
 class AuthService implements MonocleService {
   @override
@@ -64,7 +65,7 @@ class AuthService implements MonocleService {
 
         if (googleAuth == null) {
           error("Google Auth is null!");
-          toast("Authentication Failure");
+          snack("Authentication Failure");
         }
 
         OAuthCredential credential = GoogleAuthProvider.credential(

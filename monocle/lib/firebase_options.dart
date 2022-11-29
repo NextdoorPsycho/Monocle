@@ -67,7 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '739962222655',
     projectId: 'monocle-mtg',
     storageBucket: 'monocle-mtg.appspot.com',
-    iosClientId: '739962222655-hhcuf7t3ka7na7bvfkon8g09nd5atmad.apps.googleusercontent.com',
+    iosClientId:
+        '739962222655-hhcuf7t3ka7na7bvfkon8g09nd5atmad.apps.googleusercontent.com',
     iosBundleId: 'com.volmit.monocle',
   );
 
@@ -77,7 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '739962222655',
     projectId: 'monocle-mtg',
     storageBucket: 'monocle-mtg.appspot.com',
-    iosClientId: '739962222655-hhcuf7t3ka7na7bvfkon8g09nd5atmad.apps.googleusercontent.com',
+    iosClientId:
+        '739962222655-hhcuf7t3ka7na7bvfkon8g09nd5atmad.apps.googleusercontent.com',
     iosBundleId: 'com.volmit.monocle',
   );
 }
