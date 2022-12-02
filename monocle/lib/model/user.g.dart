@@ -6,9 +6,16 @@ part of 'user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-User _$UserFromJson(Map<String, dynamic> json) => User()
-  ..firstName = json['firstName'] as String?
-  ..lastName = json['lastName'] as String?;
+User _$UserFromJson(Map json) => $checkedCreate(
+      'User',
+      json,
+      ($checkedConvert) {
+        final val = User();
+        $checkedConvert('firstName', (v) => val.firstName = v as String?);
+        $checkedConvert('lastName', (v) => val.lastName = v as String?);
+        return val;
+      },
+    );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'firstName': instance.firstName,

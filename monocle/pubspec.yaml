@@ -33,16 +33,21 @@ dependencies:
   padded: ^1.0.1
   quantum: ^1.0.0
   throttled: ^1.0.1
-  delayed_progress_indicator: ^1.0.0
+  delayed_progress_indicator: ^1.0.1
   memcached: ^1.0.2
   fast_log: ^1.0.1
   precision_stopwatch: ^1.0.1
   crypto: ^3.0.2
   flutter_svg: ^1.1.6
   snackbar: ^1.0.1
+  horizontal_card_pager: ^1.1.1
   lzstring: ^2.0.0+2
   protobuf: ^2.1.0
   uuid: ^3.0.7
+  bloc: ^8.1.0
+  animated_switcher: ^1.0.1
+  dialoger: ^1.0.0
+  mapped_list: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

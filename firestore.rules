@@ -18,6 +18,10 @@ service cloud.firestore {
 
     match /user/{user} {
     	allow read,write: if isUser(user, database)
+
+      match /data/data {
+    	  allow read,write: if isUser(user, database)
+      }
     }
   }
 }

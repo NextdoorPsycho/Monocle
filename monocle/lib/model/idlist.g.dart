@@ -6,8 +6,15 @@ part of 'idlist.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-IDList _$IDListFromJson(Map<String, dynamic> json) =>
-    IDList()..data = json['data'] as String?;
+IDList _$IDListFromJson(Map json) => $checkedCreate(
+      'IDList',
+      json,
+      ($checkedConvert) {
+        final val = IDList();
+        $checkedConvert('data', (v) => val.data = v as String?);
+        return val;
+      },
+    );
 
 Map<String, dynamic> _$IDListToJson(IDList instance) => <String, dynamic>{
       'data': instance.data,

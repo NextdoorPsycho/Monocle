@@ -14,10 +14,12 @@ class CardView extends StatelessWidget {
   final bool foil;
   final bool flat;
   final bool interactive;
+  final bool interactive3D;
 
   const CardView(
       {Key? key,
       required this.id,
+      this.interactive3D = true,
       this.interactive = false,
       this.size = ImageVersion.normal,
       this.back = false,
@@ -83,25 +85,27 @@ class CardView extends StatelessWidget {
                           child: SizedBox(
                             width: MediaQuery.of(context).size.width,
                             height: MediaQuery.of(context).size.height,
-                            child: XL(
-                              dragging: const Dragging(resets: true),
-                              sharesPointer: true,
-                              duration: const Duration(milliseconds: 150),
-                              layers: [
-                                XLayer(
-                                  dimensionalOffset: 0.002,
-                                  xOffset: 1,
-                                  yOffset: 1,
-                                  xRotation: 0.2,
-                                  yRotation: 0.2,
-                                  zRotationByX: 0.2,
-                                  zRotationByGyro: 0.08,
-                                  child: Center(
-                                      child:
-                                          buildImage(context, snapshot.data!)),
-                                )
-                              ],
-                            ),
+                            child: IgnorePointer(
+                                ignoring: !interactive3D,
+                                child: XL(
+                                  dragging: const Dragging(resets: true),
+                                  sharesPointer: interactive3D,
+                                  duration: const Duration(milliseconds: 150),
+                                  layers: [
+                                    XLayer(
+                                      dimensionalOffset: 0.002,
+                                      xOffset: 1,
+                                      yOffset: 1,
+                                      xRotation: 0.2,
+                                      yRotation: 0.2,
+                                      zRotationByX: 0.2,
+                                      zRotationByGyro: 0.08,
+                                      child: Center(
+                                          child: buildImage(
+                                              context, snapshot.data!)),
+                                    )
+                                  ],
+                                )),
                           ),
                         ))
                     : wrap(context, buildImage(context, snapshot.data!)))
