@@ -4,8 +4,10 @@ import 'package:monocle/model/card_data.dart';
 import 'package:monocle/services/auth_service.dart';
 import 'package:monocle/services/magic_service.dart';
 import 'package:monocle/services/user_service.dart';
+import 'package:monocle/ui/widget/card.dart';
 import 'package:provider/provider.dart';
 import 'package:quantum/quantum.dart';
+import 'package:scryfall_api/scryfall_api.dart';
 
 BuildContext? tempContext;
 
@@ -30,7 +32,15 @@ class CardDataStream extends StatelessWidget {
         stream: userService().cardData.stream(),
         builder: (context, snap) => snap.hasData
             ? builder(snap.data!, userService().cardData)
-            : const CircularProgressIndicator(),
+            : Center(
+                child: CardView(
+                id: "d7920b6d-ff71-4802-9589-e1df0c58b9ff",
+                flat: false,
+                interactive3D: true,
+                interactive: true,
+                foil: true,
+                size: ImageVersion.normal,
+              )),
       );
 }
 
